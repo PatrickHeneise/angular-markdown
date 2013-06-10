@@ -1,0 +1,12 @@
+{
+  "name": "angular-markdown",
+  "version": "0.0.1",
+  "main": "angular.markdown.js",
+  "dependencies": {
+  	"showdown": "~0.3.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/PatrickHeneise/angular-markdown.git"
+  }
+}
