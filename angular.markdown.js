@@ -12,13 +12,13 @@
 //----------------------------------------------------------------------------------------------------------------------
 var MarkdownModule = angular.module('angular-markdown', []);
 
-MarkdownModule.directive('markdown', function () {
+MarkdownModule.directive('markdown', () => {
 	var converter = new Showdown.converter();
 
 	return {
 		restrict: 'E',
 		require: '?ngModel',
-		link: function (scope, element, attrs, model) {
+		link(scope, element, attrs, model) {
 			// Check for extensions
 			var extAttr = attrs['extensions'];
 			var callPrettyPrint = false;
@@ -26,7 +26,7 @@ MarkdownModule.directive('markdown', function () {
 				var extensions = [];
 
 				// Convert the comma separated string into a list.
-				extAttr.split(',').forEach(function (val) {
+				extAttr.split(',').forEach(val => {
 						// Strip any whitespace from the beginning or end.
 						extensions.push(val.replace(/^\s+|\s+$/g, ''));
 					});
@@ -37,7 +37,7 @@ MarkdownModule.directive('markdown', function () {
 
 				// Create a new converter.
 				converter = new Showdown.converter({
-						extensions: extensions
+						extensions
 					});
 			} // end if
 
@@ -49,7 +49,7 @@ MarkdownModule.directive('markdown', function () {
 				stripWS = false;
 			} // end if
 
-			var render = function () {
+			var render = () => {
 				var htmlText = "";
 				var val = "";
 
@@ -81,7 +81,7 @@ MarkdownModule.directive('markdown', function () {
 
 			render();
 		} // end link
-	}
+	};
 }); // end markdown directive
 
 //----------------------------------------------------------------------------------------------------------------------
